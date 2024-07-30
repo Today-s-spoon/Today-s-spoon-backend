@@ -12,10 +12,17 @@ import lombok.Data;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
+    private String userId;
+    private String userName;
+    private String password;
+    private String gender;
     private int age;
-
+    private double height;
+    private double weight;
+    private String email;
+    private double proteinAmount;
+    private double fatAmount;
+    private double carbohydrateAmount;
+    private double calorie;
 }
 

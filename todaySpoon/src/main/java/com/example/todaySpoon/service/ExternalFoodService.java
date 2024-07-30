@@ -30,7 +30,7 @@ public class ExternalFoodService {
     }
 
     public Food saveFood(Food food) {
-        food.setImageUrl(fetchFoodImage()); // 외부 API에서 이미지 URL 가져오기
+        food.setImage(fetchFoodImage()); // 외부 API에서 이미지 URL 가져오기
         return foodRepository.save(food);
     }
 }

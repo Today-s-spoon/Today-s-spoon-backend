@@ -14,15 +14,16 @@ public class Food {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String imageUrl;
-    private int servings;
-    private double carbohydrates;
-    private double protein;
-    private double fat;
+    private Long foodId;
+    private String foodName;
+    private String image;
+    private float unitAmount;
+    private float carbohydrateAmount;
+    private float proteinAmount;
+    private float fatAmount;
     private LocalDate date;
     private Long userId;
+    private float calorie;
 
 }
 
