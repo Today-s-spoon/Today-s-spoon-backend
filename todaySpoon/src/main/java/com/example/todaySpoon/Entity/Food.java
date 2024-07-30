@@ -13,14 +13,13 @@ import lombok.Setter;
 public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long foodID;
-    String foodName;
-    float calorie;
-    float unitAmount;
-    String image;
-    float proteinAmount;
-    float fatAmount;
-    float carbohydrateAmount;
+    private Long foodID;
+    private String foodName;
+    private float calorie;
+    private float unitAmount;
+    private float proteinAmount;
+    private float fatAmount;
+    private float carbohydrateAmount;
 
 
 }
