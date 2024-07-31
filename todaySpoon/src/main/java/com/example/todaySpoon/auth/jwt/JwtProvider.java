@@ -1,4 +1,5 @@
 package com.example.todaySpoon.auth.jwt;
+import com.example.todaySpoon.auth.constant.JwtConstant;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -14,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -30,17 +32,16 @@ public class JwtProvider {
     }
     public JwtToken generateToken(Authentication authentication) {
         // 권한 가져오기
-        String authorities = authentication.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.joining(","));
+//        String authorities = authentication.getAuthorities().stream()
+//                .map(GrantedAuthority::getAuthority)
+//                .collect(Collectors.joining(","));
 
         long now = (new Date()).getTime();
 
         // Access Token 생성
-        Date accessTokenExpiresIn = new Date(now + 86400000);
+        Date accessTokenExpiresIn = new Date(now + JwtConstant.ACCESS_TOKEN_EXPIRE_TIME);
         String accessToken = Jwts.builder()
                 .setSubject(authentication.getName())
-                .claim("auth", authorities)
                 .setExpiration(accessTokenExpiresIn)
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
@@ -60,16 +61,16 @@ public class JwtProvider {
 
     public Authentication getAuthentication(String accessToken){
         Claims claims = parseClaims(accessToken);
-        if(claims.get("auth") == null){
-            throw new RuntimeException("권한 정보가 없는 토큰입니다.");
-        }
+//        if(claims.get("auth") == null){
+//            throw new RuntimeException("권한 정보가 없는 토큰입니다.");
+//        }
+//
+//        Collection<? extends GrantedAuthority> authorities = Arrays.stream(claims.get("auth").toString().split(","))
+//                .map(SimpleGrantedAuthority::new)
+//                .toList();
 
-        Collection<? extends GrantedAuthority> authorities = Arrays.stream(claims.get("auth").toString().split(","))
-                .map(SimpleGrantedAuthority::new)
-                .toList();
-
-        UserDetails principal = new User(claims.getSubject(),"",authorities);
-        return new UsernamePasswordAuthenticationToken(principal,"",authorities);
+        UserDetails principal = new User(claims.getSubject(),"",new ArrayList<>());
+        return new UsernamePasswordAuthenticationToken(principal,"",new ArrayList<>());
     }
     public boolean validateToken(String token) {
         try {

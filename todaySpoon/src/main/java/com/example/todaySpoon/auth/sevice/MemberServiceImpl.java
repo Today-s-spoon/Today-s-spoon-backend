@@ -1,4 +1,6 @@
 package com.example.todaySpoon.auth.sevice;
+import com.example.todaySpoon.auth.dto.MemberDto;
+import com.example.todaySpoon.auth.dto.SignUpDto;
 import com.example.todaySpoon.auth.jwt.JwtToken;
 import com.example.todaySpoon.auth.jwt.JwtProvider;
 import com.example.todaySpoon.auth.repository.MemberRepository;
@@ -8,7 +10,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +23,8 @@ public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final JwtProvider jwtProvider;
+    private final PasswordEncoder passwordEncoder;
+
 
     @Transactional
     @Override
@@ -33,5 +41,15 @@ public class MemberServiceImpl implements MemberService {
         JwtToken jwtToken = jwtProvider.generateToken(authentication);
 
         return jwtToken;
+    }
+    @Transactional
+    @Override
+    public MemberDto signUp(SignUpDto signUpDto) {
+        if (memberRepository.existsById(signUpDto.getId())) {
+            throw new IllegalArgumentException("이미 사용 중인 사용자 이름입니다.");
+        }
+        // Password 암호화
+        String encodedPassword = passwordEncoder.encode(signUpDto.getPassword());
+        return MemberDto.toDto(memberRepository.save(signUpDto.toEntity(encodedPassword)));
     }
 }

@@ -19,9 +19,9 @@ import java.util.stream.Collectors;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Member implements UserDetails {
     @Id
-    @Column(name = "userID", updatable = false, unique = true, nullable = false)
+    @Column(name = "id",updatable = false, unique = true, nullable = false)
     private String id;
-    @Column(length = 60, nullable = false)
+    @Column(length = 255, nullable = false)
     private String password;
     @Column(length = 20, nullable = false)
     private String username;
@@ -31,14 +31,9 @@ public class Member implements UserDetails {
     private String email;
     private String gender;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Builder.Default
-    private List<String> roles = new ArrayList<>();
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles.stream()
-                .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
+        return null;
     }
 
     @Override

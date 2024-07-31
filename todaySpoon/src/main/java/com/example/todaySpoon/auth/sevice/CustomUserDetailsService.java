@@ -23,8 +23,8 @@ public class CustomUserDetailsService implements org.springframework.security.co
     private UserDetails createUserDetails(Member member) {
         return User.builder()
                 .username(member.getId())
-                .password(passwordEncoder.encode(member.getPassword()))
-                .roles(member.getRoles().toArray(new String[0]))
+                //signup 완성시 빼기
+                .password(member.getPassword())
                 .build();
     }
 }

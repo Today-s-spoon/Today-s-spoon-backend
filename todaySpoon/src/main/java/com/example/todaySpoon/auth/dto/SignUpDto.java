@@ -1,6 +1,7 @@
 package com.example.todaySpoon.auth.dto;
 
 import com.example.todaySpoon.auth.entity.Member;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,20 +16,26 @@ import java.util.List;
 @Builder
 public class SignUpDto {
 
-    private String username;
+    private String id;
     private String password;
-    private String nickname;
-    private String address;
-    private String phone;
-    private String profileImg;
-    private List<String> roles = new ArrayList<>();
+    private String username;
+    private int age;
+    private float height;
+    private float weight;
+    private String email;
+    private String gender;
 
-    public Member toEntity(String encodedPassword, List<String> roles) {
+    public Member toEntity(String encodedPassword) {
 
         return Member.builder()
-                .username(username)
+                .id(id)
                 .password(encodedPassword)
-                .roles(roles)
+                .username(username)
+                .age(age)
+                .height(height)
+                .weight(weight)
+                .email(email)
+                .gender(gender)
                 .build();
     }
 }
