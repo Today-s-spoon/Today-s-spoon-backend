@@ -1,10 +1,9 @@
-package com.example.todaySpoon.Controller;
+package com.example.todaySpoon.yerin.Controller;
 
-import com.example.todaySpoon.Entity.Food;
-import com.example.todaySpoon.Entity.User;
-import com.example.todaySpoon.Service.RecommendService;
-import com.example.todaySpoon.dto.UserResponeDto;
-import com.example.todaySpoon.repository.FoodRepository;
+import com.example.todaySpoon.yerin.Entity.Food;
+import com.example.todaySpoon.yerin.Service.RecommendService;
+import com.example.todaySpoon.yerin.dto.UserResponeDto;
+import com.example.todaySpoon.yerin.repository.FoodRepository;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import io.swagger.v3.oas.annotations.Operation;

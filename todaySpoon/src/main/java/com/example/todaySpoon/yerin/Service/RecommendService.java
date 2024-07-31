@@ -1,10 +1,10 @@
-package com.example.todaySpoon.Service;
+package com.example.todaySpoon.yerin.Service;
 
-import com.example.todaySpoon.Entity.Food;
-import com.example.todaySpoon.Entity.User;
-import com.example.todaySpoon.dto.UserResponeDto;
-import com.example.todaySpoon.repository.FoodRepository;
-import com.example.todaySpoon.repository.UserRepository;
+import com.example.todaySpoon.yerin.Entity.Food;
+import com.example.todaySpoon.yerin.Entity.User;
+import com.example.todaySpoon.yerin.dto.UserResponeDto;
+import com.example.todaySpoon.yerin.repository.FoodRepository;
+import com.example.todaySpoon.yerin.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

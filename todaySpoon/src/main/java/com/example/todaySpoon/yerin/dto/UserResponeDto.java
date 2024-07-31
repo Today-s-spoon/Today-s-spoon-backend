@@ -1,4 +1,4 @@
-package com.example.todaySpoon.dto;
+package com.example.todaySpoon.yerin.dto;
 
 import lombok.Data;
 

@@ -1,8 +1,8 @@
-package com.example.todaySpoon.Controller;
+package com.example.todaySpoon.yerin.Controller;
 
-import com.example.todaySpoon.Entity.User;
-import com.example.todaySpoon.Service.UserService;
-import com.example.todaySpoon.dto.UserUpdateDto;
+import com.example.todaySpoon.yerin.Entity.User;
+import com.example.todaySpoon.yerin.Service.UserService;
+import com.example.todaySpoon.yerin.dto.UserUpdateDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
