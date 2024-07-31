@@ -17,8 +17,11 @@ public class User {
     private double weight;
     private String email;
     private double proteinAmount;
+    private double totalProteinAmount;
     private double fatAmount;
+    private double totalFatAmount;
     private double carbohydrateAmount;
+    private double totalCarbohydrateAmount;
     private double calorie;
 
 }
