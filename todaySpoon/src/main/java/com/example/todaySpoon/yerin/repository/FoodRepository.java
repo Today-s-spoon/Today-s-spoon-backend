@@ -1,6 +1,6 @@
-package com.example.todaySpoon.repository;
+package com.example.todaySpoon.yerin.repository;
 
-import com.example.todaySpoon.Entity.Food;
+import com.example.todaySpoon.yerin.Entity.Food;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

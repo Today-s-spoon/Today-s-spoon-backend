@@ -1,4 +1,4 @@
-package com.example.todaySpoon.Entity;
+package com.example.todaySpoon.yerin.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
