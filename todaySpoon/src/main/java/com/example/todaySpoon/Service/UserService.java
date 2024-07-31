@@ -1,7 +1,6 @@
 package com.example.todaySpoon.Service;
 
 import com.example.todaySpoon.Entity.User;
-import com.example.todaySpoon.dto.UserCreateDto;
 import com.example.todaySpoon.dto.UserUpdateDto;
 import com.example.todaySpoon.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,9 +12,21 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
-    public User getUserByUsername(String userID) {
+    public UserUpdateDto getUserByUsername(String userID) {
         Optional<User> temp= userRepository.findById(userID);
-        return temp.orElse(null);
+        if (temp.isPresent()){
+            User user= temp.get();
+            UserUpdateDto dto= new UserUpdateDto();
+            dto.setUserId(user.getUserId());
+            dto.setUserName(user.getUserName());
+            dto.setPassword(user.getPassword());
+            dto.setGender(user.getGender());
+            dto.setEmail(user.getEmail());
+            dto.setHeight(user.getHeight());
+            dto.setWeight(user.getWeight());
+            return dto;
+        }
+        return null;
     }
 
     public User updateUser(UserUpdateDto user) {
@@ -25,13 +36,17 @@ public class UserService {
             newUser.setUserId(user.getUserId());
             newUser.setPassword(user.getPassword());
             newUser.setEmail(user.getEmail());
+            newUser.setUserName(user.getUserName());
+            newUser.setHeight(user.getHeight());
+            newUser.setWeight(user.getWeight());
+            newUser.setAge(user.getAge());
             userRepository.save(newUser);
             return newUser;
         }
         return null;
     }
 
-    public User joinUser(UserCreateDto dto) {
+    public User joinUser(UserUpdateDto dto) {
         double BMR;
         if (dto.getGender().equals("Male")){
             BMR= 88.362 + (13.397* dto.getWeight()) + (4.799* dto.getHeight()) - (5.677 * dto.getAge());
@@ -44,7 +59,8 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    private static User getUser(UserCreateDto dto, double BMR) {
+    //회원가입시 계산하는 메소드
+    private static User getUser(UserUpdateDto dto, double BMR) {
         User user= new User();
         user.setUserId(dto.getUserId());
         user.setUserName(dto.getUserName());
@@ -56,9 +72,12 @@ public class UserService {
         user.setEmail(dto.getEmail());
 
         user.setCalorie(BMR *  1.375);
-        user.setProteinAmount(2.2 * user.getWeight()) ;
-        user.setCarbohydrateAmount(user.getCalorie() * 0.5 /4);
-        user.setFatAmount(user.getCalorie() * 0.2 / 9);
+        user.setTotalProteinAmount(2.2 * user.getWeight()) ;
+        user.setTotalCarbohydrateAmount(user.getCalorie() * 0.5 /4);
+        user.setTotalFatAmount(user.getCalorie() * 0.2 / 9);
+        user.setCarbohydrateAmount(0);
+        user.setProteinAmount(0);
+        user.setFatAmount(0);
         return user;
     }
 }

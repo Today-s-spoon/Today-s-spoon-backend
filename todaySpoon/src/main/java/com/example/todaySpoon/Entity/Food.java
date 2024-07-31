@@ -15,6 +15,7 @@ public class Food {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long foodID;
     private String foodName;
+    private String url;
     private float calorie;
     private float unitAmount;
     private float proteinAmount;

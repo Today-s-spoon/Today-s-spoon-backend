@@ -28,6 +28,9 @@ public class RecommendService {
             dto.setFatAmount(user.getFatAmount());
             dto.setProteinAmount(user.getProteinAmount());
             dto.setCarbohydrateAmount(user.getCarbohydrateAmount());
+            dto.setTotalFatAmount(user.getFatAmount());
+            dto.setTotalProteinAmount(user.getProteinAmount());
+            dto.setTotalCarbohydrateAmount(user.getCarbohydrateAmount());
             return dto;
         }
         return null;
@@ -47,9 +50,9 @@ public class RecommendService {
     }
 
     private double calculate(User user, Food food){
-        double carbDiff =  user.getCarbohydrateAmount() - food.getCarbohydrateAmount();
-        double proteinDiff = user.getProteinAmount() - food.getProteinAmount();
-        double fatDiff = user.getFatAmount()- food.getFatAmount();
+        double carbDiff =  Math.max(user.getTotalCarbohydrateAmount()-user.getCarbohydrateAmount(),0) - food.getCarbohydrateAmount();
+        double proteinDiff = Math.max(user.getTotalProteinAmount()-user.getProteinAmount(),0) - food.getProteinAmount();
+        double fatDiff = Math.max(user.getTotalFatAmount()-user.getFatAmount(),2)- food.getFatAmount();
         return Math.pow(carbDiff,2) + Math.pow(proteinDiff,2) + Math.pow(fatDiff,2);
     }
 

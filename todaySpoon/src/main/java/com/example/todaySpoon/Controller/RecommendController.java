@@ -24,7 +24,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
-@Tag(name="��õ API",description = "user�� ����������� �߼��Ļ� ����Ʈ ��ȸ API")
+@Tag(name="추천 API",description = "user의 영양소정보와 추선식사 리스트 조회 API")
 @RequestMapping("/recommendation")
 @RequiredArgsConstructor
 public class RecommendController {
@@ -36,18 +36,24 @@ public class RecommendController {
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "0317";
 
-    @Operation(summary = "")
+    @Operation(summary = "user의 현재 영양소/총 영양소 조회")
     @GetMapping("/{userID}")
     public UserResponeDto getUserAmount(@PathVariable String userID) {
         return recommendService.getUserAmount(userID);
     }
 
+    @Operation(summary = "현재 사용자의 남은 영양소에 따른 추천 식단 4개 조회")
     @GetMapping("/{userID}/foods")
     public List<Food> getAllFoods(@PathVariable String userID){
         return recommendService.getAllFoods(userID);
     }
 
 
+
+
+
+
+    //csv mysql로 옮기기
     @GetMapping("/aaaa")
     public void addfood(){
 
