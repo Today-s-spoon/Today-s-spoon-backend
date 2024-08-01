@@ -1,6 +1,8 @@
-package com.example.todaySpoon.Entity;
+package com.example.todaySpoon.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,10 +12,10 @@ import lombok.Setter;
 @Setter
 public class Food {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long foodID;
     private String foodName;
-    private String url;
+    private String imgname;
     private float calorie;
     private float unitAmount;
     private float proteinAmount;

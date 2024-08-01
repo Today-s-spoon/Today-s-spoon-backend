@@ -1,8 +1,8 @@
 package com.example.todaySpoon.Service;
 
 
-import com.example.todaySpoon.Entity.User;
-import com.example.todaySpoon.Repository.UserRepository;
+import com.example.todaySpoon.entity.User;
+import com.example.todaySpoon.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

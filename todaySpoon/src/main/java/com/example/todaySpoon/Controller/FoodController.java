@@ -2,13 +2,11 @@ package com.example.todaySpoon.Controller;
 
 import com.example.todaySpoon.S3.S3Uploader;
 import com.example.todaySpoon.Service.FoodService;
-import com.example.todaySpoon.Entity.EatenFood;
-import com.example.todaySpoon.Entity.Food;
-import com.example.todaySpoon.Repository.FoodRepository;
+import com.example.todaySpoon.entity.EatenFood;
+import com.example.todaySpoon.entity.Food;
+import com.example.todaySpoon.repository.FoodRepository;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +20,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 
-@Tag(name="기록페이지 api", description = "모든 음식 리스트 조회 기능, 음식 기록 기능")
+
 @RestController
 @RequestMapping("/api/post")
 @RequiredArgsConstructor
@@ -39,13 +37,11 @@ public class FoodController {
 
     private final FoodService foodService;
 
-    @Operation(summary = "모든 음식 리스트 조회", description = "사용자가 기록페이지에서 먹은 음식을 기록하기 위해 모든 음식 리스트를 조회합니다")
     @GetMapping("/foods")
     public List<EatenFood> getFoodList() {
         return foodService.getFoodList();
     }
 
-    @Operation(summary = "먹은 음식 기록", description = "사용자가 먹은 음식을 기록합니다. 음식아이디, 유저아이디, 양을 반환")
     @PostMapping("/{amount}/{userId}/{foodId}")
     public EatenFood addFood(@PathVariable Long foodId, @PathVariable String userId, @PathVariable float amount){
         return foodService.saveFood(foodId,userId,amount);
@@ -60,8 +56,6 @@ public class FoodController {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (S3Uploader.Exception500 e) {
             return ResponseEntity.status(500).body(e.getMessage());
-
-   
         }
     }
 
