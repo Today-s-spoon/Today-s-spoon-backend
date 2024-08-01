@@ -1,7 +1,7 @@
-package com.example.todaySpoon.repository;
+package com.example.todaySpoon.Repository;
 
 
-import com.example.todaySpoon.entity.EatenFood;
+import com.example.todaySpoon.Entity.EatenFood;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

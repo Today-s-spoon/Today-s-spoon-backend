@@ -1,8 +1,7 @@
-package com.example.todaySpoon.repository;
+package com.example.todaySpoon.Repository;
 
 
-import com.example.todaySpoon.entity.User;
-import org.springframework.context.annotation.ComponentScan;
+import com.example.todaySpoon.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

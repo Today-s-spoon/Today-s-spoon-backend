@@ -1,20 +1,13 @@
 package com.example.todaySpoon.Controller;
 
-
-import com.example.todaySpoon.Dto.UserResponeDto;
-import com.example.todaySpoon.Service.RecommendService;
-import com.example.todaySpoon.entity.Food;
-
-import com.example.todaySpoon.repository.FoodRepository;
+import com.example.todaySpoon.Service.FoodService;
+import com.example.todaySpoon.Entity.EatenFood;
+import com.example.todaySpoon.Entity.Food;
+import com.example.todaySpoon.Repository.FoodRepository;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,40 +17,41 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-@RestController
-@Tag(name="추천 API",description = "user의 영양소정보와 추선식사 리스트 조회 API")
-@RequestMapping("/recommendation")
-@RequiredArgsConstructor
-public class RecommendController {
 
-    private final RecommendService recommendService;
+
+@RestController
+@RequestMapping("/api/post")
+@RequiredArgsConstructor
+public class FoodController {
+
+
     private final FoodRepository foodRepository;
-    private static final String CSV_FILE_PATH = "C:\\food.csv";
+    private static final String CSV_FILE_PATH = "G:\\food2.csv";
     private static final String DB_URL = "jdbc:mysql://localhost:3306/todaySpoon";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "0317";
+    private static final String DB_PASSWORD = "0126";
 
-    @Operation(summary = "user의 현재 영양소/총 영양소 조회")
-    @GetMapping("/{userID}")
-    public UserResponeDto getUserAmount(@PathVariable String userID) {
-        return recommendService.getUserAmount(userID);
+
+    private final FoodService foodService;
+
+    @GetMapping("/foods")
+    public List<EatenFood> getFoodList() {
+        return foodService.getFoodList();
     }
 
-    @Operation(summary = "현재 사용자의 남은 영양소에 따른 추천 식단 4개 조회")
-    @GetMapping("/{userID}/foods")
-    public List<Food> getAllFoods(@PathVariable String userID){
-        return recommendService.getAllFoods(userID);
+    @PostMapping("/{amount}/{userId}/{foodId}")
+    public EatenFood addFood(@PathVariable Long foodId, @PathVariable String userId, @PathVariable float amount){
+        return foodService.saveFood(foodId,userId,amount);
     }
 
 
+//    @GetMapping("/image/{foodName}")
+//    public String fetchFoodImage(@PathVariable String foodName) {
+//        return foodService.fetchFoodImage(foodName);
+//    }
 
-
-
-
-    //csv mysql로 옮기기
     @GetMapping("/aaaa")
-    public void addfood(){
-
+    public void addfood() {
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              CSVReader csvReader = new CSVReader(new FileReader(CSV_FILE_PATH))) {
 
@@ -70,6 +64,7 @@ public class RecommendController {
             while ((nextLine = csvReader.readNext()) != null) {
                 Food food = new Food();
                 food.setFoodName(nextLine[0]);
+                System.out.println(food.getFoodName());
                 food.setProteinAmount(Float.parseFloat(nextLine[1]));
                 food.setFatAmount(Float.parseFloat(nextLine[2]));
                 food.setCarbohydrateAmount(Float.parseFloat(nextLine[3]));
@@ -84,4 +79,6 @@ public class RecommendController {
             e.printStackTrace();
         }
     }
-}
+
+
+    }

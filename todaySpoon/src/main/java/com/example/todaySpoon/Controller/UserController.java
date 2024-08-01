@@ -1,7 +1,7 @@
 package com.example.todaySpoon.Controller;
 
 import com.example.todaySpoon.Service.JUserService;
-import com.example.todaySpoon.entity.EatenFood;
+import com.example.todaySpoon.Entity.EatenFood;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
