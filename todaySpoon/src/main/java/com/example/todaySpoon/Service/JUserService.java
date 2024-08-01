@@ -1,8 +1,8 @@
 package com.example.todaySpoon.Service;
 
 
-import com.example.todaySpoon.entity.EatenFood;
-import com.example.todaySpoon.repository.EatenFoodRepository;
+import com.example.todaySpoon.Entity.EatenFood;
+import com.example.todaySpoon.Repository.EatenFoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

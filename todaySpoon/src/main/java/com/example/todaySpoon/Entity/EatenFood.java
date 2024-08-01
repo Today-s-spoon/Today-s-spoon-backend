@@ -1,4 +1,4 @@
-package com.example.todaySpoon.entity;
+package com.example.todaySpoon.Entity;
 
 
 import jakarta.persistence.Entity;

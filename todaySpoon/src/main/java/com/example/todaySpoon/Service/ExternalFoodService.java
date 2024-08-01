@@ -1,13 +1,10 @@
 package com.example.todaySpoon.Service;
 
 
-import com.example.todaySpoon.entity.Food;
-import com.example.todaySpoon.repository.FoodRepository;
+import com.example.todaySpoon.Repository.FoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
 // 외부 API 호출을 위한 설정
 // RestTemplate을 사용하여 외부 API를 호출하고 데이터 가져와서 저장
 @Service

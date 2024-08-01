@@ -3,9 +3,9 @@ package com.example.todaySpoon.Controller;
 
 import com.example.todaySpoon.Dto.UserResponeDto;
 import com.example.todaySpoon.Service.RecommendService;
-import com.example.todaySpoon.entity.Food;
+import com.example.todaySpoon.Entity.Food;
 
-import com.example.todaySpoon.repository.FoodRepository;
+import com.example.todaySpoon.Repository.FoodRepository;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import io.swagger.v3.oas.annotations.Operation;
