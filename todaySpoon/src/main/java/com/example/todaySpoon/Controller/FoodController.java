@@ -51,7 +51,6 @@ public class FoodController {
         return foodService.saveFood(foodId,userId,amount);
     }
 
-<<<<<<< HEAD:todaySpoon/src/main/java/com/example/todaySpoon/controller/FoodController.java
     @GetMapping("/image")
     public ResponseEntity<String> getFileUrl(@RequestParam("fileName") String fileName) {
         try {
