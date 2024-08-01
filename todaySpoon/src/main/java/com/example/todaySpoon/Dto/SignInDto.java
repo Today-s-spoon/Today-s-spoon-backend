@@ -1,4 +1,4 @@
-package com.example.todaySpoon.auth.dto;
+package com.example.todaySpoon.Dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

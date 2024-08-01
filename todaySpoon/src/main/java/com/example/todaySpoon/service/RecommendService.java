@@ -1,10 +1,11 @@
-package com.example.todaySpoon.yerin.Service;
+package com.example.todaySpoon.Service;
 
-import com.example.todaySpoon.yerin.Entity.Food;
-import com.example.todaySpoon.yerin.Entity.User;
-import com.example.todaySpoon.yerin.dto.UserResponeDto;
-import com.example.todaySpoon.yerin.repository.FoodRepository;
-import com.example.todaySpoon.yerin.repository.UserRepository;
+
+import com.example.todaySpoon.Dto.UserResponeDto;
+import com.example.todaySpoon.entity.Food;
+import com.example.todaySpoon.entity.User;
+import com.example.todaySpoon.repository.FoodRepository;
+import com.example.todaySpoon.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class RecommendService {
         if (temp.isPresent()){
             User user= temp.get();
             UserResponeDto dto= new UserResponeDto();
-            dto.setUserName(user.getUserName());
+            dto.setUserName(user.getUsername());
             dto.setFatAmount(user.getFatAmount());
             dto.setProteinAmount(user.getProteinAmount());
             dto.setCarbohydrateAmount(user.getCarbohydrateAmount());

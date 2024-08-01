@@ -1,9 +1,9 @@
-package com.example.todaySpoon.controller;
+package com.example.todaySpoon.Controller;
 
+import com.example.todaySpoon.Service.FoodService;
 import com.example.todaySpoon.entity.EatenFood;
 import com.example.todaySpoon.entity.Food;
 import com.example.todaySpoon.repository.FoodRepository;
-import com.example.todaySpoon.service.FoodService;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.List;
 
 
@@ -46,10 +45,10 @@ public class FoodController {
     }
 
 
-    @GetMapping("/image/{foodName}")
-    public String fetchFoodImage(@PathVariable String foodName) {
-        return foodService.fetchFoodImage(foodName);
-    }
+//    @GetMapping("/image/{foodName}")
+//    public String fetchFoodImage(@PathVariable String foodName) {
+//        return foodService.fetchFoodImage(foodName);
+//    }
 
     @GetMapping("/aaaa")
     public void addfood() {

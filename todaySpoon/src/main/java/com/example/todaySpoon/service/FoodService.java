@@ -1,4 +1,5 @@
-package com.example.todaySpoon.service;
+package com.example.todaySpoon.Service;
+
 
 import com.example.todaySpoon.entity.EatenFood;
 import com.example.todaySpoon.entity.Food;
@@ -26,8 +27,6 @@ public class FoodService {
     @Autowired
     private EatenFoodRepository eatenFoodRepository;
 
-    @Autowired
-    private RestTemplate restTemplate;
     public List<EatenFood> getFoodList() {
         return eatenFoodRepository.findAll();
     }
@@ -38,9 +37,9 @@ public class FoodService {
         if (temp.isPresent() && temp2.isPresent()) {
             Food food = temp.get();
             User user = temp2.get();
-            user.setProteinAmount(Math.max(user.getProteinAmount() - food.getProteinAmount()*(amount/100),0));
-            user.setCarbohydrateAmount(Math.max(user.getCarbohydrateAmount() - food.getCarbohydrateAmount()*(amount/100),0));
-            user.setFatAmount(Math.max(user.getFatAmount() - food.getFatAmount()*(amount/100),0));
+            user.setProteinAmount(user.getProteinAmount() + food.getProteinAmount()*(amount/100));
+            user.setCarbohydrateAmount(user.getCarbohydrateAmount() + food.getCarbohydrateAmount()*(amount/100));
+            user.setFatAmount(user.getFatAmount() + food.getFatAmount()*(amount/100));
             EatenFood eatenFood = new EatenFood(temp.get(),temp2.get(),LocalDate.now(),amount);
             return eatenFoodRepository.save(eatenFood);
 
@@ -58,10 +57,10 @@ public class FoodService {
         return foodRepository.findByUserIdAndDate(userId, date);
     }
 */
-    public String fetchFoodImage(String foodName) {
-        String apiUrl = "https://api.example.com/food-image?name=" + foodName;
-        return restTemplate.getForObject(apiUrl, String.class);
-    }
+//    public String fetchFoodImage(String foodName) {
+//        String apiUrl = "https://api.example.com/food-image?name=" + foodName;
+//        return restTemplate.getForObject(apiUrl, String.class);
+//    }
 
 
 

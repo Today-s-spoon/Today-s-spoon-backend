@@ -1,5 +1,6 @@
 package com.example.todaySpoon.entity;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,8 +16,8 @@ import java.time.LocalDate;
 @Setter
 public class EatenFood implements Serializable {
     public EatenFood(Food food, User user, LocalDate date, float eatenAmount) {
-        this.userID = user.getUserId();
-        this.foodId = food.getFoodId();
+        this.userID = user.getId();
+        this.foodId = food.getFoodID();
         this.date = date;
         this.eatenAmount = eatenAmount;
     }

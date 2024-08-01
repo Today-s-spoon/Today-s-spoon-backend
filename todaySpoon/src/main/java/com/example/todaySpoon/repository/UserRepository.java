@@ -1,12 +1,17 @@
 package com.example.todaySpoon.repository;
 
-import com.example.todaySpoon.entity.Food;
+
 import com.example.todaySpoon.entity.User;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
-import java.util.List;
+import java.util.Optional;
 
+
+@Repository
 public interface UserRepository extends JpaRepository<User, String> {
-
+    Optional<User> findById(String userId);
+    @Override
+    <S extends User> S save(S entity);
 }

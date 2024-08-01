@@ -1,4 +1,4 @@
-package com.example.todaySpoon.yerin;
+package com.example.todaySpoon;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.example.todaySpoon.yerin.Config;
+package com.example.todaySpoon.SwaggerConfig;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import org.springframework.context.annotation.Bean;
@@ -10,9 +10,9 @@ public class SwaggerConfig {
     public OpenAPI customOpenAPI(){
         return new OpenAPI()
                 .info(new Info()
-                        .title("¿À´ÃÀÇ ¼ù°¡¶ô API")
+                        .title("ì˜¤ëŠ˜ì˜ ìˆŸê°€ë½ API")
                         .version("v1.0.0")
-                        .description("¿À´ÃÀÇ ¼ù°¡¶ô APIÀÔ´Ï´Ù.")
+                        .description("ì˜¤ëŠ˜ì˜ ìˆŸê°€ë½ API ì…ë‹ˆë‹¤")
                 );
     }
 }

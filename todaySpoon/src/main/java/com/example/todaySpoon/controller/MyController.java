@@ -1,8 +1,10 @@
-package com.example.todaySpoon.yerin.Controller;
+package com.example.todaySpoon.Controller;
 
-import com.example.todaySpoon.yerin.Entity.User;
-import com.example.todaySpoon.yerin.Service.UserService;
-import com.example.todaySpoon.yerin.dto.UserUpdateDto;
+
+import com.example.todaySpoon.Dto.UserUpdateDto;
+import com.example.todaySpoon.Service.YUserService;
+import com.example.todaySpoon.entity.User;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -14,23 +16,23 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class MyController {
 
-    private final UserService userService;
+    private final YUserService yUserService;
 
     @Operation(summary = "user 현재 회원 정보 조회")
     @GetMapping("/{user_id}")
     public UserUpdateDto getUserByUserID(@PathVariable String user_id) {
-        return userService.getUserByUsername(user_id);
+        return yUserService.getUserByUsername(user_id);
     }
 
     @Operation(summary = "user 정보 업데이트")
     @PutMapping
     public User updateUser(@RequestBody UserUpdateDto user) {
-        return userService.updateUser(user);
+        return yUserService.updateUser(user);
     }
 
     // test를 위한 회원가입
     @PostMapping
     public User joinUser (@RequestBody UserUpdateDto user){
-        return userService.joinUser(user);
+        return yUserService.joinUser(user);
     }
 }

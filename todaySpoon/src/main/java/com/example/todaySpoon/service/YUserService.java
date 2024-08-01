@@ -1,8 +1,10 @@
-package com.example.todaySpoon.yerin.Service;
+package com.example.todaySpoon.Service;
 
-import com.example.todaySpoon.yerin.Entity.User;
-import com.example.todaySpoon.yerin.dto.UserUpdateDto;
-import com.example.todaySpoon.yerin.repository.UserRepository;
+
+import com.example.todaySpoon.Dto.UserUpdateDto;
+import com.example.todaySpoon.entity.User;
+import com.example.todaySpoon.repository.UserRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,15 +12,15 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class YUserService {
     private final UserRepository userRepository;
     public UserUpdateDto getUserByUsername(String userID) {
         Optional<User> temp= userRepository.findById(userID);
         if (temp.isPresent()){
             User user= temp.get();
             UserUpdateDto dto= new UserUpdateDto();
-            dto.setUserId(user.getUserId());
-            dto.setUserName(user.getUserName());
+            dto.setUserId(user.getId());
+            dto.setUserName(user.getUsername());
             dto.setPassword(user.getPassword());
             dto.setGender(user.getGender());
             dto.setEmail(user.getEmail());
@@ -33,10 +35,10 @@ public class UserService {
         Optional<User> temp= userRepository.findById(user.getUserId());
         if(temp.isPresent()){
             User newUser = temp.get();
-            newUser.setUserId(user.getUserId());
+            newUser.setId(user.getUserId());
             newUser.setPassword(user.getPassword());
             newUser.setEmail(user.getEmail());
-            newUser.setUserName(user.getUserName());
+            newUser.setUsername(user.getUserName());
             newUser.setHeight(user.getHeight());
             newUser.setWeight(user.getWeight());
             newUser.setAge(user.getAge());
@@ -62,8 +64,8 @@ public class UserService {
     //회원가입시 계산하는 메소드
     private static User getUser(UserUpdateDto dto, double BMR) {
         User user= new User();
-        user.setUserId(dto.getUserId());
-        user.setUserName(dto.getUserName());
+        user.setId(dto.getUserId());
+        user.setUsername(dto.getUserName());
         user.setPassword(dto.getPassword());
         user.setAge(dto.getAge());
         user.setHeight(dto.getHeight());

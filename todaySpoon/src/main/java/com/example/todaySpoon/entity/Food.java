@@ -4,26 +4,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Data;
-
-import java.time.LocalDate;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Food {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long foodId;
+    private Long foodID;
     private String foodName;
-    private String image;
+    private String url;
+    private float calorie;
     private float unitAmount;
-    private float carbohydrateAmount;
     private float proteinAmount;
     private float fatAmount;
-    private LocalDate date;
-    private Long userId;
-    private float calorie;
+    private float carbohydrateAmount;
+
 
 }
-
