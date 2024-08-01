@@ -1,4 +1,4 @@
-package com.example.todaySpoon.Controller;
+package com.example.todaySpoon.controller;
 
 
 import com.example.todaySpoon.Dto.MemberDto;
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/users")
 public class MemberController {
+
     private final UserService userService;
 
     @PostMapping("/login")

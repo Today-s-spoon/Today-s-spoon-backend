@@ -1,4 +1,4 @@
-package com.example.todaySpoon.Controller;
+package com.example.todaySpoon.controller;
 
 import com.example.todaySpoon.Service.JUserService;
 import com.example.todaySpoon.entity.EatenFood;
