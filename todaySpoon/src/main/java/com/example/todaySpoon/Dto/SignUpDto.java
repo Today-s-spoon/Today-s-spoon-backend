@@ -1,14 +1,11 @@
-package com.example.todaySpoon.auth.dto;
+package com.example.todaySpoon.Dto;
 
-import com.example.todaySpoon.auth.entity.Member;
-import jakarta.persistence.Column;
+
+import com.example.todaySpoon.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -25,9 +22,9 @@ public class SignUpDto {
     private String email;
     private String gender;
 
-    public Member toEntity(String encodedPassword) {
+    public User toEntity(String encodedPassword) {
 
-        return Member.builder()
+        return User.builder()
                 .id(id)
                 .password(encodedPassword)
                 .username(username)

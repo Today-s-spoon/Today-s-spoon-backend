@@ -1,8 +1,7 @@
-package com.example.todaySpoon.yerin.dto;
+package com.example.todaySpoon.Dto;
 
 import lombok.Data;
 
-//영양소 전달할 때 사용하는 DTO
 @Data
 public class UserResponeDto {
     private String userName;
