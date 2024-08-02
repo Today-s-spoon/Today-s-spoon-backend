@@ -7,6 +7,7 @@ import com.example.todaySpoon.entity.Food;
 import com.example.todaySpoon.repository.FoodRepository;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/post")
+@RequestMapping("/api/")
 @RequiredArgsConstructor
 public class FoodController {
 
@@ -37,27 +38,31 @@ public class FoodController {
 
     private final FoodService foodService;
 
+
+    // 음식 리스트 다 보여주기
     @GetMapping("/foods")
-    public List<EatenFood> getFoodList() {
+    public List<Food> getFoodList() {
         return foodService.getFoodList();
     }
 
+    // 음식 기록하기
     @PostMapping("/{amount}/{userId}/{foodId}")
     public EatenFood addFood(@PathVariable Long foodId, @PathVariable String userId, @PathVariable float amount){
         return foodService.saveFood(foodId,userId,amount);
     }
 
-    @GetMapping("/image")
-    public ResponseEntity<String> getFileUrl(@RequestParam("fileName") String fileName) {
-        try {
-            String fileUrl = s3Uploader.getFileUrl(fileName);
-            return ResponseEntity.ok(fileUrl);
-        } catch (S3Uploader.Exception400 e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        } catch (S3Uploader.Exception500 e) {
-            return ResponseEntity.status(500).body(e.getMessage());
-        }
-    }
+//    // 이미지 불러오기 파일명으로 url을 찾아오는 형식.
+//    @GetMapping("/image")
+//    public ResponseEntity<String> getFileUrl(@RequestParam("fileName") String fileName) {
+//        try {
+//            String fileUrl = s3Uploader.getFileUrl(fileName);
+//            return ResponseEntity.ok(fileUrl);
+//        } catch (S3Uploader.Exception400 e) {
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        } catch (S3Uploader.Exception500 e) {
+//            return ResponseEntity.status(500).body(e.getMessage());
+//        }
+//    }
 
 
 //    @GetMapping("/aaaa")
