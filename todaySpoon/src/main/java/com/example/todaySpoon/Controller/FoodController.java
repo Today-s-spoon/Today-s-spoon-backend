@@ -9,7 +9,11 @@ import com.opencsv.exceptions.CsvValidationException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,6 +22,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 
 @Tag(name="기록페이지 api", description = "모든 음식 리스트 조회 기능, 음식 기록 기능")
@@ -48,11 +53,6 @@ public class FoodController {
         return foodService.saveFood(foodId,userId,amount);
     }
 
-
-//    @GetMapping("/image/{foodName}")
-//    public String fetchFoodImage(@PathVariable String foodName) {
-//        return foodService.fetchFoodImage(foodName);
-//    }
 
     @Operation(summary = "음식 리스트를 데이터베이스에 저장합니다", description = "프론트가 사용하지 않습니다")
     @GetMapping("/aaaa")
@@ -85,5 +85,22 @@ public class FoodController {
         }
     }
 
-
+    @PostMapping("/{foodId}")
+    public ResponseEntity<String> uploadFoodImage(@PathVariable Long foodId, @RequestParam("file") MultipartFile file) {
+        try {
+            foodService.saveFoodImage(foodId, file);
+            return ResponseEntity.ok("Image uploaded successfully");
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error uploading image");
+        }
     }
+
+    @GetMapping("/{foodId}")
+    public ResponseEntity<byte[]> getFoodImage(@PathVariable Long foodId) {
+        byte[] image = foodService.getFoodImage(foodId);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(image);
+    }
+
+}
+
+

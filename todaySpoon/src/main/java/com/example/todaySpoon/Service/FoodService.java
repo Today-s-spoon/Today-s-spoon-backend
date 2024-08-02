@@ -9,7 +9,9 @@ import com.example.todaySpoon.Repository.FoodRepository;
 import com.example.todaySpoon.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -39,7 +41,7 @@ public class FoodService {
             user.setProteinAmount(user.getProteinAmount() + food.getProteinAmount()*(amount/100));
             user.setCarbohydrateAmount(user.getCarbohydrateAmount() + food.getCarbohydrateAmount()*(amount/100));
             user.setFatAmount(user.getFatAmount() + food.getFatAmount()*(amount/100));
-            EatenFood eatenFood = new EatenFood(temp.get(),temp2.get(),LocalDate.now(),amount);
+            EatenFood eatenFood = new EatenFood(food,user,LocalDate.now(),amount);
             return eatenFoodRepository.save(eatenFood);
 
         }
@@ -61,6 +63,24 @@ public class FoodService {
 //        return restTemplate.getForObject(apiUrl, String.class);
 //    }
 
+    public void saveFoodImage(Long foodId, MultipartFile file) throws IOException {
+        Optional<Food> foodOptional = foodRepository.findById(foodId);
+        if (foodOptional.isPresent()) {
+            Food food = foodOptional.get();
+            food.setImage(file.getBytes());
+            foodRepository.save(food);
+        } else {
+            throw new IllegalArgumentException("Invalid foodId: " + foodId);
+        }
+    }
+
+    public byte[] getFoodImage(Long foodId) {
+        Optional<Food> foodOptional = foodRepository.findById(foodId);
+        if (foodOptional.isPresent()) {
+            return foodOptional.get().getImage();
+        }
+        throw new IllegalArgumentException("Invalid foodId: " + foodId);
+    }
 
 
 

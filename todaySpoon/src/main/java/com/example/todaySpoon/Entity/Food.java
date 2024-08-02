@@ -13,12 +13,11 @@ public class Food {
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long foodID;
     private String foodName;
-    private String url;
+    private byte[] image;
     private float calorie;
     private float unitAmount;
     private float proteinAmount;
     private float fatAmount;
     private float carbohydrateAmount;
-
 
 }

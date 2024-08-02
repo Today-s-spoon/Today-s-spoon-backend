@@ -33,6 +33,7 @@ public class EatenFood implements Serializable {
 
     float eatenAmount;
 
+
     public EatenFood() {
 
     }
