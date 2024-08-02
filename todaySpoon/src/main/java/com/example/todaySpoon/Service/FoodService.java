@@ -65,27 +65,6 @@ public class FoodService {
 //        return restTemplate.getForObject(apiUrl, String.class);
 //    }
 
-    public void saveFoodImage(Long foodId, MultipartFile file) throws IOException {
-        Optional<Food> foodOptional = foodRepository.findById(foodId);
-        if (foodOptional.isPresent()) {
-            Food food = foodOptional.get();
-            food.setImage(file.getBytes());
-            foodRepository.save(food);
-        } else {
-            throw new IllegalArgumentException("Invalid foodId: " + foodId);
-        }
-    }
-
-    public byte[] getFoodImage(Long foodId) {
-        Optional<Food> foodOptional = foodRepository.findById(foodId);
-        if (foodOptional.isPresent()) {
-            return foodOptional.get().getImage();
-        }
-        throw new IllegalArgumentException("Invalid foodId: " + foodId);
-    }
-
-
-
 
 
 }
