@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class EatenFood implements Serializable {
-    public EatenFood(Food food, User user, LocalDate date, float eatenAmount) {
+    public EatenFood(com.example.todaySpoon.entity.Food food, com.example.todaySpoon.entity.User user, LocalDate date, float eatenAmount) {
         this.userID = user.getId();
         this.foodId = food.getFoodID();
         this.date = date;
@@ -32,6 +32,11 @@ public class EatenFood implements Serializable {
     private LocalDate date;
 
     float eatenAmount;
+
+
+
+    private String imgUrl;
+
 
     public EatenFood() {
 

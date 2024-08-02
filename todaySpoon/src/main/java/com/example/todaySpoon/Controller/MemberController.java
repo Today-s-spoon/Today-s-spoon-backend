@@ -6,6 +6,8 @@ import com.example.todaySpoon.Dto.SignInDto;
 import com.example.todaySpoon.Dto.SignUpDto;
 import com.example.todaySpoon.auth.jwt.JwtToken;
 import com.example.todaySpoon.Service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/users")
+@Tag(name="로그인 회원가입 API",description = "로그인과 회원가입하는 API")
+@RequestMapping("api/users")
 public class MemberController {
 
     private final UserService userService;
 
+    @Operation(summary = "로그인", description="id와 password로 로그인하고 토큰 반환합니다")
     @PostMapping("/login")
     public JwtToken signIn(@RequestBody SignInDto signInDto) {
         String userId = signInDto.getId();
@@ -31,7 +35,7 @@ public class MemberController {
         log.info("jwtToken accessToken = {}, refreshToken = {}", jwtToken.getAccessToken(), jwtToken.getRefreshToken());
         return jwtToken;
     }
-
+    @Operation(summary = "회원가입", description="회원가입 합니다.")
     @PostMapping("/sign-up")
     public ResponseEntity<MemberDto> signUp(@RequestBody SignUpDto signUpDto) {
         MemberDto savedMemberDto = userService.signUp(signUpDto);

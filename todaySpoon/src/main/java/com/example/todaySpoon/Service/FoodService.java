@@ -9,8 +9,9 @@ import com.example.todaySpoon.repository.FoodRepository;
 import com.example.todaySpoon.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -27,8 +28,8 @@ public class FoodService {
     @Autowired
     private EatenFoodRepository eatenFoodRepository;
 
-    public List<EatenFood> getFoodList() {
-        return eatenFoodRepository.findAll();
+    public List<Food> getFoodList() {
+        return foodRepository.findAll();
     }
 
     public EatenFood saveFood(Long foodId, String userId, float amount) {
@@ -40,7 +41,7 @@ public class FoodService {
             user.setProteinAmount(user.getProteinAmount() + food.getProteinAmount()*(amount/100));
             user.setCarbohydrateAmount(user.getCarbohydrateAmount() + food.getCarbohydrateAmount()*(amount/100));
             user.setFatAmount(user.getFatAmount() + food.getFatAmount()*(amount/100));
-            EatenFood eatenFood = new EatenFood(temp.get(),temp2.get(),LocalDate.now(),amount);
+            EatenFood eatenFood = new EatenFood(food,user,LocalDate.now(),amount);
             return eatenFoodRepository.save(eatenFood);
 
         }
@@ -48,6 +49,8 @@ public class FoodService {
 
 
     }
+
+
 /*
     public List<Food> getLatestFoodByUserId(Long userId) {
         return foodRepository.findTopByUserIdOrderByDateDesc(userId);
@@ -61,9 +64,6 @@ public class FoodService {
 //        String apiUrl = "https://api.example.com/food-image?name=" + foodName;
 //        return restTemplate.getForObject(apiUrl, String.class);
 //    }
-
-
-
 
 
 
