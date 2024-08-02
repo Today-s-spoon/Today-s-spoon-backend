@@ -16,7 +16,7 @@ import java.util.List;
 
 @Tag(name="분석페이지 api",description = "당일 먹은 음식을 가져오는 기능과 날짜별로 먹은 음식을 가져오는 기능이 있습니다")
 @RestController
-@RequestMapping("/analysis")
+@RequestMapping("api/analysis")
 public class UserController {
 
     @Autowired

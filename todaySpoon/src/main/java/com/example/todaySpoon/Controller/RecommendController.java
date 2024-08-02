@@ -26,7 +26,7 @@ import java.util.List;
 
 @RestController
 @Tag(name="추천 API",description = "user의 영양소정보와 추선식사 리스트 조회 API")
-@RequestMapping("/recommendation")
+@RequestMapping("api/recommendation")
 @RequiredArgsConstructor
 public class RecommendController {
 
