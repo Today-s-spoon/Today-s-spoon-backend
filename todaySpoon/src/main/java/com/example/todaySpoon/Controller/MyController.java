@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Tag(name="마이페이지 API",description = "user의 회원 정보 조회와 정보 수정")
-@RequestMapping("/my")
+@RequestMapping("api/my")
 @RequiredArgsConstructor
 public class MyController {
 

@@ -30,7 +30,7 @@ import java.util.Optional;
 
 @Tag(name="기록페이지 api", description = "모든 음식 리스트 조회 기능, 음식 기록 기능")
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class FoodController {
 
