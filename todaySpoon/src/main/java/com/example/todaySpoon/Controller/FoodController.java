@@ -51,6 +51,8 @@ public class FoodController {
         return foodService.getFoodList();
     }
 
+    @GetMapping("/foods/{food-id}")
+    public Food getFood(@PathVariable Long foodId){return foodService.getById(foodId);}
     // 음식 기록하기
     @Operation(summary = "먹은 음식 기록", description = "사용자가 먹은 음식을 기록합니다. 음식아이디, 유저아이디, 양을 반환")
     @PostMapping("/{amount}/{userId}/{foodId}")

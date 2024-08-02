@@ -50,6 +50,10 @@ public class FoodService {
 
     }
 
+    public Food getById(Long foodId) {
+       return foodRepository.getById(foodId);
+    }
+
 
 /*
     public List<Food> getLatestFoodByUserId(Long userId) {

@@ -49,11 +49,6 @@ public class RecommendController {
         return recommendService.getAllFoods(userID);
     }
 
-
-
-
-
-
     //csv mysql로 옮기기
     @GetMapping("/aaaa")
     public void addfood(){
