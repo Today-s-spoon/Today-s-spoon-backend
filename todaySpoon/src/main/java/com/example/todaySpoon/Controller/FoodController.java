@@ -1,6 +1,6 @@
 package com.example.todaySpoon.Controller;
 
-import com.example.todaySpoon.S3.S3Uploader;
+
 import com.example.todaySpoon.Service.FoodService;
 import com.example.todaySpoon.entity.EatenFood;
 import com.example.todaySpoon.entity.Food;
@@ -40,8 +40,6 @@ public class FoodController {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/todaySpoon";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "0126";
-
-    private final S3Uploader s3Uploader;
 
     private final FoodService foodService;
 
