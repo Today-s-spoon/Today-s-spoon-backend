@@ -33,7 +33,10 @@ public class EatenFood implements Serializable {
 
     float eatenAmount;
 
+
+
     private String imgUrl;
+
 
     public EatenFood() {
 
