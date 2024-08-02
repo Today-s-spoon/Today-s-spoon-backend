@@ -1,4 +1,4 @@
-package com.example.todaySpoon.Controller;
+package com.example.todaySpoon.controller;
 
 
 import com.example.todaySpoon.Dto.UserUpdateDto;
@@ -30,9 +30,4 @@ public class MyController {
         return yUserService.updateUser(user);
     }
 
-    // test를 위한 회원가입
-    @PostMapping
-    public User joinUser (@RequestBody UserUpdateDto user){
-        return yUserService.joinUser(user);
-    }
 }

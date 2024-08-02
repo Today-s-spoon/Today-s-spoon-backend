@@ -1,4 +1,4 @@
-package com.example.todaySpoon.Controller;
+package com.example.todaySpoon.controller;
 
 
 import com.example.todaySpoon.Dto.MemberDto;
@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name="로그인 회원가입 API",description = "로그인과 회원가입하는 API")
 @RequestMapping("api/users")
 public class MemberController {
+
     private final UserService userService;
 
     @Operation(summary = "로그인", description="id와 password로 로그인하고 토큰 반환합니다")

@@ -26,12 +26,12 @@ public class RecommendService {
             User user= temp.get();
             UserResponeDto dto= new UserResponeDto();
             dto.setUserName(user.getUsername());
-            dto.setFatAmount(user.getFatAmount());
-            dto.setProteinAmount(user.getProteinAmount());
-            dto.setCarbohydrateAmount(user.getCarbohydrateAmount());
-            dto.setTotalFatAmount(user.getFatAmount());
-            dto.setTotalProteinAmount(user.getProteinAmount());
-            dto.setTotalCarbohydrateAmount(user.getCarbohydrateAmount());
+            dto.setFatAmount(Math.round(user.getFatAmount()*100)/100.0);
+            dto.setProteinAmount(Math.round(user.getProteinAmount()*100)/100.0);
+            dto.setCarbohydrateAmount(Math.round(user.getCarbohydrateAmount()*100)/100.0);
+            dto.setTotalFatAmount(Math.round(user.getTotalFatAmount()*100)/100.0);
+            dto.setTotalProteinAmount(Math.round(user.getTotalProteinAmount()*100)/100.0);
+            dto.setTotalCarbohydrateAmount(Math.round(user.getTotalCarbohydrateAmount()*100)/100.0);
             return dto;
         }
         return null;
