@@ -9,7 +9,6 @@ import com.example.todaySpoon.repository.FoodRepository;
 import com.example.todaySpoon.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -27,8 +26,8 @@ public class FoodService {
     @Autowired
     private EatenFoodRepository eatenFoodRepository;
 
-    public List<EatenFood> getFoodList() {
-        return eatenFoodRepository.findAll();
+    public List<Food> getFoodList() {
+        return foodRepository.findAll();
     }
 
     public EatenFood saveFood(Long foodId, String userId, float amount) {
@@ -48,6 +47,8 @@ public class FoodService {
 
 
     }
+
+
 /*
     public List<Food> getLatestFoodByUserId(Long userId) {
         return foodRepository.findTopByUserIdOrderByDateDesc(userId);

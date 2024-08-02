@@ -11,4 +11,7 @@ import java.util.List;
 public interface EatenFoodRepository extends JpaRepository<EatenFood, Long> {
     @Query("select E from EatenFood E where E.date = :date AND E.userID = :userId")
     List<EatenFood> findByUserIdAndDate(String userId, LocalDate date);
+
+    @Query("select E from EatenFood  E where E.userID = : userId")
+    List<EatenFood> findByUserId(String userId);
 }
