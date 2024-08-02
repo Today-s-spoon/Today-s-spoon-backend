@@ -1,12 +1,12 @@
 package com.example.todaySpoon.Service;
 
 
-import com.example.todaySpoon.Entity.EatenFood;
-import com.example.todaySpoon.Entity.Food;
-import com.example.todaySpoon.Entity.User;
-import com.example.todaySpoon.Repository.EatenFoodRepository;
-import com.example.todaySpoon.Repository.FoodRepository;
-import com.example.todaySpoon.Repository.UserRepository;
+import com.example.todaySpoon.entity.EatenFood;
+import com.example.todaySpoon.entity.Food;
+import com.example.todaySpoon.entity.User;
+import com.example.todaySpoon.repository.EatenFoodRepository;
+import com.example.todaySpoon.repository.FoodRepository;
+import com.example.todaySpoon.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,8 +28,8 @@ public class FoodService {
     @Autowired
     private EatenFoodRepository eatenFoodRepository;
 
-    public List<EatenFood> getFoodList() {
-        return eatenFoodRepository.findAll();
+    public List<Food> getFoodList() {
+        return foodRepository.findAll();
     }
 
     public EatenFood saveFood(Long foodId, String userId, float amount) {
@@ -49,6 +49,8 @@ public class FoodService {
 
 
     }
+
+
 /*
     public List<Food> getLatestFoodByUserId(Long userId) {
         return foodRepository.findTopByUserIdOrderByDateDesc(userId);

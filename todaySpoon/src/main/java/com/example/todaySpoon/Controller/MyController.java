@@ -3,7 +3,7 @@ package com.example.todaySpoon.Controller;
 
 import com.example.todaySpoon.Dto.UserUpdateDto;
 import com.example.todaySpoon.Service.YUserService;
-import com.example.todaySpoon.Entity.User;
+import com.example.todaySpoon.entity.User;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

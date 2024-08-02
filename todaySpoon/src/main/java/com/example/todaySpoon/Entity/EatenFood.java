@@ -1,4 +1,4 @@
-package com.example.todaySpoon.Entity;
+package com.example.todaySpoon.entity;
 
 
 import jakarta.persistence.Entity;
@@ -32,6 +32,10 @@ public class EatenFood implements Serializable {
     private LocalDate date;
 
     float eatenAmount;
+
+
+
+    private String imgUrl;
 
 
     public EatenFood() {

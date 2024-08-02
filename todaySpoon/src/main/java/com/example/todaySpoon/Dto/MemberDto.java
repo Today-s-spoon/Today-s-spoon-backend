@@ -1,7 +1,7 @@
 package com.example.todaySpoon.Dto;
 
 
-import com.example.todaySpoon.Entity.User;
+import com.example.todaySpoon.entity.User;
 import lombok.*;
 
 @Getter

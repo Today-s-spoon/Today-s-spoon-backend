@@ -4,7 +4,7 @@ import com.example.todaySpoon.Dto.MemberDto;
 import com.example.todaySpoon.Dto.SignUpDto;
 import com.example.todaySpoon.auth.jwt.JwtToken;
 import com.example.todaySpoon.auth.jwt.JwtProvider;
-import com.example.todaySpoon.Repository.UserRepository;
+import com.example.todaySpoon.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
