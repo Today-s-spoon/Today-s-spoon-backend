@@ -56,7 +56,6 @@ public class SecurityConfig {
         config.setAllowedOrigins(List.of("*")); // 허용할 출처 설정
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // 허용할 HTTP 메서드 설정
         config.setAllowedHeaders(List.of("*")); // 허용할 헤더 설정
-        config.setAllowCredentials(true); // 자격 증명 허용 여부
         source.registerCorsConfiguration("/**", config);
         return source;
     }
