@@ -14,6 +14,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
+
 @Configuration
 @RequiredArgsConstructor
 @EnableWebSecurity
@@ -43,7 +49,17 @@ public class SecurityConfig {
                 )
                 .build();
     }
-
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowedOrigins(List.of("*")); // 허용할 출처 설정
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // 허용할 HTTP 메서드 설정
+        config.setAllowedHeaders(List.of("*")); // 허용할 헤더 설정
+        config.setAllowCredentials(true); // 자격 증명 허용 여부
+        source.registerCorsConfiguration("/**", config);
+        return source;
+    }
     @Bean
     public PasswordEncoder passwordEncoder() {
         // BCrypt Encoder 사용
