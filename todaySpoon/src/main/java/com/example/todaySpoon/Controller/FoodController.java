@@ -11,12 +11,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -51,8 +46,9 @@ public class FoodController {
         return foodService.getFoodList();
     }
 
+    @Operation(summary = "음식 아이디로 음식 조회", description = "기록페이지에서 먹은 음식을 선택하면, 선택한 음식의 id받아 food class를 반환합니다.")
     @GetMapping("/foods/{food-id}")
-    public Food getFood(@PathVariable Long foodId){return foodService.getById(foodId);}
+    public Optional<Food> getFood(@PathVariable Long foodId){return foodService.getById(foodId);}
     // 음식 기록하기
     @Operation(summary = "먹은 음식 기록", description = "사용자가 먹은 음식을 기록합니다. 음식아이디, 유저아이디, 양을 반환")
     @PostMapping("/{amount}/{userId}/{foodId}")
