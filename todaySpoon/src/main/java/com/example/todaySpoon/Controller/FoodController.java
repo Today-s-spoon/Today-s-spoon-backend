@@ -31,10 +31,10 @@ public class FoodController {
 
 
     private final FoodRepository foodRepository;
-    private static final String CSV_FILE_PATH = "G:\\food2.csv";
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/todaySpoon";
+    private static final String CSV_FILE_PATH = "C:\\Users\\User\\Desktop\\food.csv";
+    private static final String DB_URL = "jdbc:mysql://todayspoon.cjimkm6ow1mn.ap-northeast-2.rds.amazonaws.com:3306/todaySpoon?serverTimezone=Asia/Seoul&characterEncoding=UTF-8";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "0126";
+    private static final String DB_PASSWORD = "shsh0615";
 
     private final FoodService foodService;
 
@@ -79,8 +79,8 @@ public class FoodController {
              CSVReader csvReader = new CSVReader(new FileReader(CSV_FILE_PATH))) {
 
             String[] nextLine;
-            String insertQuery = "INSERT INTO food (foodid, food_name, unit_amount, carbohydrate_amount,fat_amount, protein_amount, calorie) VALUES (?, ?, ?,?,?,?,?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+//            String insertQuery = "INSERT INTO food (foodid, food_name, unit_amount, carbohydrate_amount,fat_amount, protein_amount, calorie) VALUES (?, ?, ?,?,?,?,?)";
+//            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
 
             csvReader.readNext();
 
