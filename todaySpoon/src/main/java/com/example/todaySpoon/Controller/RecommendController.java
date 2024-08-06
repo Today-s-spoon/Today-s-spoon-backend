@@ -57,8 +57,6 @@ public class RecommendController {
              CSVReader csvReader = new CSVReader(new FileReader(CSV_FILE_PATH))) {
 
             String[] nextLine;
-            String insertQuery = "INSERT INTO food (foodid, food_name, unit_amount, carbohydrate_amount,fat_amount, protein_amount, calorie) VALUES (?, ?, ?,?,?,?,?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
 
             csvReader.readNext();
 
